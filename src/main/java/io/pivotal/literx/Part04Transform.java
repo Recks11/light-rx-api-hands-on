@@ -3,7 +3,6 @@ package io.pivotal.literx;
 import io.pivotal.literx.domain.User;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.publisher.MonoProcessor;
 
 /**
  * Learn how to transform values.
@@ -35,7 +34,7 @@ public class Part04Transform {
 
 	// TODO Capitalize the users username, firstName and lastName using #asyncCapitalizeUser
 	Flux<User> asyncCapitalizeMany(Flux<User> flux) {
-		return null;
+		return flux.flatMap(user -> asyncCapitalizeUser(user));
 	}
 
 	Mono<User> asyncCapitalizeUser(User u) {
